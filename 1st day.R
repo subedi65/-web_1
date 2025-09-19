@@ -37,6 +37,7 @@ newList2 <- newList[-7]
 newList3 <- append(newList2, list(stdEnglshLevel = c(1,2,3,4,5)), after = 4)
 
 #creating the factors based on religions and retrieving the frequency and levels
+
 stdReligions <-factor(c("hindu", "christan","Islam","muslim","hindu"))
 stdlevel <- levels(stdReligions)
 stdfrequency <- table(stdReligions)
