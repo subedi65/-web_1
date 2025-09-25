@@ -43,18 +43,85 @@ stdlevel <- levels(stdReligions)
 stdfrequency <- table(stdReligions)
 
 # creating dataframes 
-education <- data.frame(ID = c(1,2,3,4,5),
-                        Name = c("Prabesh","Anup","Hari", "Rohit","Prakriti"),
-                        age = c(21,22,22,23,21),
-                        livingarea = c("rural", "urban","rural","urban","rural"),
-                        major =  c("IT","Global Business","Hospitality","IT","Hospitality"),
-                        semester= c(1,3,2,5,3),
-                        attendence = c("yes","No","yes","No","NO"),
-                        grade = c('A','B','C','D','F'),
-                        result = c("fail","pass","fail","pass","pass")
+education <- data.frame(ID = sample(c(1,2,3,4,NA),50,replace = TRUE),
+                        Name = sample(c("Prabesh","Anup","Hari", NA,"Prakriti"),50,replace = TRUE),
+                        age = sample(c(21,22,22,23,21, NA),50,replace = TRUE),
+                        gender = sample(c("Male", "Female"), 50, replace = TRUE),
+                        livingarea = sample(c("rural", NA,"rural","urban","rural"),50,replace = TRUE),
+                        major =  sample(c("IT",NA,"Hospitality","IT","Hospitality"),50,replace = TRUE),
+                        semester= sample(c(1,3,2,5,3),50,replace = TRUE),
+                        attendence = sample(c("yes","No","yes",NA,"NO"),50,replace = TRUE),
+                        grade = sample(c('A','B',NA,'D','F'),50,replace = TRUE),
+                        result = sample(c("fail","pass",NA,"pass","pass"),50,replace = TRUE),
+                        homecountry = sample(c("nepal",NA,"india","bangladesh","philipines"),50,replace = TRUE)
                         
 )
 education
-structure <- str(education)
-summarys <- summary(education)
 
+#finding the structure of dataframe
+structure <- str(education)
+structure(education)
+
+#finding the summary of the dataframes
+summary <- summary(education)
+summary(education)
+
+
+#finding dimensions
+Dimension <- dim(education)
+Dimension
+
+# records and features 
+Records <- nrow(education)
+Records
+
+Features <- ncol(education)
+Features
+
+
+#listing features names
+featureName <- names(education)
+featureName
+
+#counting the features number
+Features
+
+
+#finding the number of NA in dataset
+number_of_NA <- sum(is.na(education))
+number_of_NA
+
+#percentage of missing values per features
+percentageofmissingvalueperfeature <- colSums(is.na(education))*100
+percentageofmissingvalueperfeature
+
+
+
+# Percentage of missing values
+percentage_missing <- (number_of_NA /Features) * 100
+#percentage_missing
+
+
+#adding the missing values
+clean_df <- na.omit(education)
+sum(is.na(clean_df))
+
+
+#finding the proportion of males and females std by major
+proportion1 <- prop.table(table(education$gender))
+proportion1
+
+
+#finding the proportion of males and females by location
+proportion2 <- prop.table(table(education$livingarea))
+proportion2
+
+prop.table(table(clean_df$gender, clean_df$livingarea))
+prop.table(table(clean_df$gender, clean_df$result))
+
+
+install.packages("skimr")
+library("skimr")
+
+
+skim(clean_df)
