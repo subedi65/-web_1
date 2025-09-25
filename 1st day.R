@@ -120,8 +120,8 @@ prop.table(table(clean_df$gender, clean_df$livingarea))
 prop.table(table(clean_df$gender, clean_df$result))
 
 
-install.packages("skimr")
-library("skimr")
+#install.packages("skimr")
+#library("skimr")
 
 
-skim(clean_df)
+#skim(clean_df)
