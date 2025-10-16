@@ -41,6 +41,7 @@ length(unique(iris$Species))
 #8obtaing information
 prop.table(table(iris$Species))
 
+data("USArrests")
 
 
 
